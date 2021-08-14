@@ -1,0 +1,38 @@
+extends layout
+
+block content
+  section(id="payroll-select" class="unselectable")
+    label(for="start-day") Payroll starts from:
+    select(name="start-day" id="start-day")
+    select(name="start-month")
+    label(for="end-day") Ends on:
+    select(name="end-day" id="end-day")
+    select(name="end-month")
+
+  section(id="date" class="unselectable")
+    div(id='prePayroll' class='payroll-selection' alt='Previous payroll')= '<'
+    #dateList
+    div(id='nextPayroll' class='payroll-selection' alt='Next payroll')= '>'
+
+  section(id="period" class="unselectable")
+    div(class="main-line vertical-line")
+
+    -var classList = "horizontal-line unselectable"
+    -var hour = 6;
+    -for (let i = 0; i<=16*4; i++)
+      div(class="period-element-container")
+        case i%4
+          when 0
+            div(class= classList+" hour-line")
+            div(class= "hour-name unselectable")= hour+":00"
+            - hour++
+          when 1
+          when 3
+            div(class= classList+" quarter-line")
+          when 2
+            div(class= classList+" half-line")
+
+  section(id="clients" class="unselectable")
+    #add-client +
+
+  section(id="travelResults")

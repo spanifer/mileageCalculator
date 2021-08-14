@@ -1,0 +1,303 @@
+:root {
+  --body-padding: 5px;
+  --body-margin: 2px;
+  --body-delta: calc(2*var(--body-padding) + 2*var(--body-margin));
+
+  --default-button-scale: 48px;
+  --dateSection-height: var(--default-button-scale);
+  --default-small-button-scale: 36px;
+
+  --svg-delete-url: url('/svg/delete_forever-24px.svg');
+  --svg-setting-url: url('/svg/settings-24px.svg');
+
+  --period-line-color: black;
+  --period-line-length: 32px;
+  --period-line-widt: 2px;
+}
+
+body {
+  padding: var(--body-padding);
+  margin: var(--body-margin);
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+main {
+  display: grid;
+  max-width: 1200px;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  grid-template: "payroll payroll" auto
+                 "date date" auto
+                 "period clients" calc(100vh - 2*var(--body-padding) - 2*var(--body-margin) - var(--dateSection-height)) / 2fr 1fr; 
+                 /*should i use js to calc date height to avoid scrolling on page? is there a way in css?*/
+                 /*or just keep the date grid on fixed height and make it a scrollable overflow*/
+}
+
+#payroll-select {
+  grid-area: payroll;
+}
+
+#date {
+  grid-area: date;
+  display: flex;
+  flex-direction: row;
+}
+
+.payroll-selection {
+  width: var(--default-button-scale);
+  height: var(--default-button-scale);
+}
+
+#dateList {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+}
+
+.day-date {
+  height: var(--dateSection-height);
+  min-width: var(--dateSection-height);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border: 1px solid green;
+}
+
+.selected-date {
+  background-color: lightgreen;
+}
+
+
+#period {
+  grid-area: period;
+  margin: .5rem;
+  position: relative;
+  touch-action: none;
+}
+
+.period-element-container {
+  position: relative;
+  height: calc(100% / (16*4));
+}
+
+.period-element-container:last-child {height: var(--period-line-widt);}
+.period-element-container:last-child:hover {display: none;}
+
+.period-element-container:hover {
+  background: linear-gradient(90deg, green, lightgreen, transparent, transparent);
+}
+
+.main-line {
+  position: absolute; /*Why am i keep forgetting? that if the parent is relative, an absolute child will be absolute relative to the parent!!!*/
+  height: 100%;
+}
+
+.vertical-line {
+  border-left: var(--period-line-widt) solid var(--period-line-color);
+}
+
+.horizontal-line {
+  position: absolute;
+  border-top: var(--period-line-widt) solid var(--period-line-color);
+  top: -1px;
+  /*height: calc(100% / (16*4) - 2px); /*for 16 hours a day*/
+}
+
+.hour-line {width: var(--period-line-length);}
+.half-line {width: calc(var(--period-line-length)*(2/3));}
+.quarter-line {width: calc(var(--period-line-length)*(1/3));}
+
+.hour-name {
+  position: absolute;
+  top: -.5rem;
+  left: var(--period-line-length);
+}
+
+.time-of-period {
+  display: grid;
+  grid-template-rows: 50% 50%;
+  height: 100%;
+}
+
+.time-elem {background-color: white; border-radius: 20%;}
+.start-time {align-self: start;}
+.finish-time {align-self: end;}
+
+
+#clients {
+  grid-area: clients;
+  
+  margin: 8px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.client {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 3rem;
+  min-height: 1rem;
+
+  border: 1px solid green;
+}
+
+#add-client {
+  font-size: 43px;
+  font-weight: 500;
+  text-align: center;
+  align-self: center;
+  width: var(--default-button-scale);
+  height: var(--default-button-scale);
+  background-color: lightgreen;
+  border-radius: 50%;
+}
+
+#add-client:active {background-color: green;}
+
+/*UI interaction changes*/
+/*.popup-mask {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+}*/
+
+.popup-bg-mask {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; height: 100vh;
+  top: 0; left: 0;
+  background-color: rgba(0,0,0,0.3);
+  z-index: 100;
+}
+
+.popup-content {
+  display: flex;
+  flex-direction: column;
+  padding: var(--body-padding);
+  width: fit-content;
+  height: fit-content;
+  max-height: 80vh;
+  overflow-y: auto;
+  border: 5px solid rgba(50,100,50,0.6);
+  border-radius: 10px;
+  background-color: white;
+}
+
+.selected-client {
+  background-color: lightgreen;
+}
+
+.period-elem {
+  position: absolute;
+  left: 2px;
+  transition: left 200ms;
+
+  background-color: lightgreen;
+
+  width: calc(100% - var(--period-line-length)*(2/3));
+
+  z-index: 10;
+}
+
+.selected-period-elem {
+  z-index: -1;
+  opacity: 0.5;
+  left: calc(var(--period-line-length)*(2/3));
+}
+
+.selected-period {/*This is basically a reminder that this happens to follow state*/}
+
+.client > span {
+  margin: auto;
+}
+
+.period-elem-button {
+  width: var(--default-button-scale);
+  height: var(--default-button-scale);
+  background-repeat: no-repeat;
+  border: 0;
+  z-index: 15;
+}
+
+.setting-period {
+  background-image: var(--svg-setting-url)/*calc((var(--default-button-scale)-24)/2)*/;
+  background-position: 12px 12px;
+}
+
+.delete-period {
+  background-image: var(--svg-delete-url);
+  background-position: 12px 12px;
+}
+
+.period-popup {
+  --btn: var(--default-small-button-scale);
+  position: absolute;
+  right: 0;
+  display: grid;
+  grid-template-rows: 50% 50%;
+  grid-template-columns: repeat(4, var(--btn));
+  height: 100%;
+  /*min-height: calc(var(--btn)+1rem);*/
+  z-index: 30;
+}
+
+.period-move-btn {
+  --btn: var(--default-small-button-scale);
+  position: relative;
+  width: var(--btn);
+  height: var(--btn);
+  border-color: lightgreen;
+  border-radius: 50%;
+  background-color: white;
+  text-align: center;
+  font-size: 32px;
+  border:1px solid green;
+}
+.period-move-btn:active {background-color: lightgreen;}
+.period-move-btn-small {
+  --btn: calc(var(--default-small-button-scale)-8px);
+  margin: 4px; width: var(--btn); height: 26px;/*height: var(--btn); for whatever reason this doesnt work*/
+  font-size: 26px;
+}
+.period-move-btn-up {top: calc(var(--default-small-button-scale)/2*(-1));}
+.period-move-btn-down {bottom: calc(var(--default-small-button-scale)/2*(-1)); align-self: end;}
+
+
+.hidden-buttons {display: none;}
+
+.body-no-pan-y {touch-action: none;} /*After a gesture starts, changes to touch-action will not have any impact on the behavior of the current gesture.*/
+
+input[type='number'] {width: 5rem;}
+
+
+/*https://stackoverflow.com/questions/2310734/how-to-make-html-text-unselectable*/
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/*For Debug*/
+footer {
+  position: sticky;
+  float: right;
+  left: 0; bottom: 0;
+}
