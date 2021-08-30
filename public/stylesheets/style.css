@@ -7,8 +7,8 @@
   --dateSection-height: var(--default-button-scale);
   --default-small-button-scale: 36px;
 
-  --svg-delete-url: url('./public/svg/delete_forever-24px.svg');
-  --svg-setting-url: url('./public/svg/settings-24px.svg');
+  --svg-delete-url: url('../svg/delete_forever-24px.svg');
+  --svg-setting-url: url('../svg/settings-24px.svg');
 
   --period-line-color: black;
   --period-line-length: 32px;
