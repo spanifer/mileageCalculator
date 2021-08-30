@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+  <html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="./public/stylesheets/style.css">
+    <script src="./public/javascripts/main.js"></script>
+    <link rel="preload" type="image/svg+xml" href="./public/svg/delete_forever-24px.svg" as="image">
+    <link rel="preload" type="image/svg+xml" href="./public/svg/settings-24px.svg" as="image">
+  </head>
+
+  <body>
+    <main>
+      <section class="unselectable" id="payroll-select"><label for="start-day">Payroll starts from:</label><select
+          name="start-day" id="start-day"></select><select name="start-month"></select><label for="end-day">Ends
+          on:</label><select name="end-day" id="end-day"></select><select name="end-month"></select></section>
+      <section class="unselectable" id="date">
+        <div class="payroll-selection" id="prePayroll" alt="Previous payroll">&lt;</div>
+        <div id="dateList"></div>
+        <div class="payroll-selection" id="nextPayroll" alt="Next payroll">&gt;</div>
+      </section>
+      <section class="unselectable" id="period">
+        <div class="main-line vertical-line"></div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">6:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">7:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">8:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">9:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">10:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">11:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">12:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">13:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">14:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">15:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">16:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">17:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">18:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">19:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">20:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">21:00</div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable half-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable quarter-line"></div>
+        </div>
+        <div class="period-element-container">
+          <div class="horizontal-line unselectable hour-line"></div>
+          <div class="hour-name unselectable">22:00</div>
+        </div>
+      </section>
+      <section class="unselectable" id="clients">
+        <div id="add-client">+</div>
+      </section>
+      <section id="travelResults"></section>
+    </main>
+    <footer></footer>
+  </body>
+
+  </html>
